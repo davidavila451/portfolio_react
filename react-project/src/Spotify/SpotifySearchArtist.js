@@ -20,9 +20,9 @@ function SpotifySearchArtists(){
         setToken(token);
     }, []);
 
-    const searchArtists = async (e) => {
-        e.preventDefault();
-        const {data} = await axios.get("https://api.spotify.com/v1/search", {
+    const searchArtists = async (event) => {
+        event.preventDefault();
+        const {data} = await axios.get('https://api.spotify.com/v1/search', {
             headers: {
                 Authorization: `Bearer ${token}`
             },
@@ -47,7 +47,7 @@ function SpotifySearchArtists(){
     return(
         <div>
             <form onSubmit={searchArtists}>
-                <input type="text" onChange={e => setSearchKey(e.target.value)}/>
+                <input type="text" onChange={(e) => setSearchKey(e.target.value)}/>
                 <button type={"submit"}>Search</button>
             </form>
         {renderArtists()}
